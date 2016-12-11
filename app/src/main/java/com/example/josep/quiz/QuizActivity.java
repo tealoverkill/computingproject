@@ -28,6 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     };
     private int mCurrentIndex = 0;
     private boolean mIsCheater;
+    public int mScoreCounter = 0;
 
     //method for loading next question
     private void updateQuestion() {
@@ -46,6 +47,8 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             if (userPressedTrue == answerIsTrue) {
                 messageResId = R.string.correct_toast;
+                //correct answer adds 1 to score counter
+                mScoreCounter++;
             } else {
                 messageResId = R.string.incorrect_toast;
             }
@@ -86,8 +89,6 @@ public class QuizActivity extends AppCompatActivity {
         });
 
 
-
-
         //sets a Listener on the false button and creates Toast for answers
         mFalseButton = (Button) findViewById(R.id.false_button);
         mFalseButton.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +112,14 @@ public class QuizActivity extends AppCompatActivity {
 
         updateQuestion();
     }
+
+    //to count scores if someone scored
+    /*public void someoneScored(boolean usertrue){
+        boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
+        if (!mIsCheater && (usertrue == answerIsTrue))
+            mScoreCounter++;
+
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
