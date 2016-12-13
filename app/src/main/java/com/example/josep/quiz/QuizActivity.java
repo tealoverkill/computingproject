@@ -47,8 +47,6 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             if (userPressedTrue == answerIsTrue) {
                 messageResId = R.string.correct_toast;
-                //correct answer adds 1 to score counter
-                mScoreCounter++;
             } else {
                 messageResId = R.string.incorrect_toast;
             }
@@ -56,6 +54,15 @@ public class QuizActivity extends AppCompatActivity {
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
                 .show();
     }
+
+    //method to add point if answer is correct, created public so result class can use it to calculate score
+    public void isAnswerCorrect(boolean userPressedTrue) {
+            boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
+
+            if (!mIsCheater && (userPressedTrue == answerIsTrue))
+                mScoreCounter++;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
