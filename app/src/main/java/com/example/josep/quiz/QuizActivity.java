@@ -18,6 +18,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mFalseButton;
     private Button mNextButton;
     private Button mCheatButton;
+    private Button mSubmitButton;
     private TextView mQuestionTextView;
     private TextView mScoreText;
     private Question[] mQuestionBank = new Question[] {
@@ -27,30 +28,13 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_3, false, false),
             new Question(R.string.question_4, false, false),
     };
-    private boolean mAllQuestionsAnswered = false;
     private int mCurrentIndex = 0;
     private boolean mIsCheater;
     public int mScoreCounter = 0;
-
-    //method for checking if all questions are answered
-    private boolean checkAllQuestionsAnswered()  {
-        int counter = 0;
-        for (int q = 0; q < mQuestionBank.length; q++)  {
-            if (mQuestionBank[q].getIsAnswered())   {
-                counter++;
-            }
-        }
-
-        if (counter == mQuestionBank.length)    {
-            return true;
-        }
-
-        return false;
-    }
+    private int mQuestionsAnswered = 0;
 
     //method for loading next question
     private void updateQuestion() {
-        checkAllQuestionsAnswered();
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
     }
@@ -154,6 +138,7 @@ public class QuizActivity extends AppCompatActivity {
                     isAnswerCorrect(true);
                     mScoreText.setText("Score: " + mScoreCounter);
                     mQuestionBank[mCurrentIndex].setIsAnswered(true);
+                    mQuestionsAnswered ++;
                 }
             }
         });
@@ -173,6 +158,7 @@ public class QuizActivity extends AppCompatActivity {
                     isAnswerCorrect(false);
                     mScoreText.setText("Score: " + mScoreCounter);
                     mQuestionBank[mCurrentIndex].setIsAnswered(true);
+                    mQuestionsAnswered++;
                 }
             }
         });
@@ -186,6 +172,22 @@ public class QuizActivity extends AppCompatActivity {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 mIsCheater = false;
                 updateQuestion();
+            }
+        });
+
+        mSubmitButton = (Button) findViewById(R.id.submit_button);
+        mSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mQuestionsAnswered == mQuestionBank.length)  {
+                    Intent finalscore = new Intent(getApplicationContext(), com.example.josep.quiz.ResultActivity.class);
+                    finalscore.putExtra("final_score", mScoreCounter);
+                    startActivity(finalscore);
+                }
+                else    {
+                    Toast.makeText(QuizActivity.this, R.string.not_answered_toast, Toast.LENGTH_SHORT)
+                            .show();
+                }
             }
         });
 

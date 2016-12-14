@@ -53,10 +53,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                /**
                 Intent Scorelist = new Intent(getApplicationContext(), com.example.josep.quiz.ScorelistActivity.class);
                 //creates an Intent named Scorelist
                 startActivity(Scorelist);
                 //starts Scorelist
+                 */
+
             }
         });
     }
