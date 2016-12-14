@@ -7,10 +7,12 @@ package com.example.josep.quiz;
 public class Question {
     private int mTextResId;
     private boolean mAnswerTrue;
+    private boolean mIsAnswered;
 
-    public Question(int textResId, boolean answerTrue) {
+    public Question(int textResId, boolean answerTrue, boolean isAnswered) {
         mTextResId = textResId;
         mAnswerTrue = answerTrue;
+        mIsAnswered = isAnswered;
     }
 
     public int getTextResId() {
@@ -29,4 +31,11 @@ public class Question {
         mAnswerTrue = answerTrue;
     }
 
+    public boolean getIsAnswered()  {
+        return mIsAnswered;
+    }
+
+    public void setIsAnswered(boolean isAnswered)    {
+        mIsAnswered = isAnswered;
+    }
 }

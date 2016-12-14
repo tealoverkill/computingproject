@@ -22,6 +22,7 @@
     <string name="question_text">
         2 + 2 = 4
     </string>
+    <string name="already_answered_toast">Already answered!</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="next_button">Next</string>

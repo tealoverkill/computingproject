@@ -21,18 +21,36 @@ public class QuizActivity extends AppCompatActivity {
     private TextView mQuestionTextView;
     private TextView mScoreText;
     private Question[] mQuestionBank = new Question[] {
-            new Question(R.string.question_text, true),
-            new Question(R.string.question_1, true),
-            new Question(R.string.question_2, false),
-            new Question(R.string.question_3, false),
-            new Question(R.string.question_4, false),
+            new Question(R.string.question_text, true, false),
+            new Question(R.string.question_1, true, false),
+            new Question(R.string.question_2, false, false),
+            new Question(R.string.question_3, false, false),
+            new Question(R.string.question_4, false, false),
     };
+    private boolean mAllQuestionsAnswered = false;
     private int mCurrentIndex = 0;
     private boolean mIsCheater;
     public int mScoreCounter = 0;
 
+    //method for checking if all questions are answered
+    private boolean checkAllQuestionsAnswered()  {
+        int counter = 0;
+        for (int q = 0; q < mQuestionBank.length; q++)  {
+            if (mQuestionBank[q].getIsAnswered())   {
+                counter++;
+            }
+        }
+
+        if (counter == mQuestionBank.length)    {
+            return true;
+        }
+
+        return false;
+    }
+
     //method for loading next question
     private void updateQuestion() {
+        checkAllQuestionsAnswered();
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
     }
@@ -80,12 +98,12 @@ public class QuizActivity extends AppCompatActivity {
 
     /* TO BE COMPLETED
 
-      1. Create boolean variable to determine if question has been answered before.
+      1. [DONE, check Question.java] Create boolean variable to determine if question has been answered before.
          If yes, then mScoreCounter will not increase.
          Conditions: if he chooses "show answer", clicks "true" or clicks "false", it records as answered.
          Currently it increases if the answer is clicked correctly, but allows repetition.
 
-      2. Create boolean variable to determine whether all questions answered.
+      2. [DONE, check QuizActivity.java] Create boolean variable to determine whether all questions answered.
 
       3. Create Submit button which appears if all questions answered, add Listener to send intent to ResultActivity when clicked
 
@@ -127,9 +145,16 @@ public class QuizActivity extends AppCompatActivity {
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkAnswer(true);
-                isAnswerCorrect(true);
-                mScoreText.setText("Score: " + mScoreCounter);
+                if (mQuestionBank[mCurrentIndex].getIsAnswered())   {
+                    Toast.makeText(QuizActivity.this, R.string.already_answered_toast, Toast.LENGTH_SHORT)
+                            .show();
+                }
+                else    {
+                    checkAnswer(true);
+                    isAnswerCorrect(true);
+                    mScoreText.setText("Score: " + mScoreCounter);
+                    mQuestionBank[mCurrentIndex].setIsAnswered(true);
+                }
             }
         });
 
@@ -139,9 +164,16 @@ public class QuizActivity extends AppCompatActivity {
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkAnswer(false);
-                isAnswerCorrect(false);
-                mScoreText.setText("Score: " + mScoreCounter);
+                if (mQuestionBank[mCurrentIndex].getIsAnswered())   {
+                    Toast.makeText(QuizActivity.this, R.string.already_answered_toast, Toast.LENGTH_SHORT)
+                            .show();
+                }
+                else    {
+                    checkAnswer(false);
+                    isAnswerCorrect(false);
+                    mScoreText.setText("Score: " + mScoreCounter);
+                    mQuestionBank[mCurrentIndex].setIsAnswered(true);
+                }
             }
         });
 
