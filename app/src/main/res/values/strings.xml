@@ -11,7 +11,8 @@
     <string name="player1_registration">Enter Player 1\'s Name</string>
     <string name="player2_registration">Enter Player 2\'s Name</string>
     <string name="proceed_registration">Proceed</string>
-    <string name="blank_registration"></string>
+    <string name="blank_registration">Name cannot be empty</string>
+    <string name="user_already_exists_registration">User already exists</string>
 
     //Players Start menu
     <string name="player1_turn">Player 1\'s turn</string>
