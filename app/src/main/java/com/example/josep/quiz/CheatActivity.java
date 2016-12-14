@@ -19,7 +19,7 @@ public class CheatActivity extends AppCompatActivity {
     private boolean mAnswerIsTrue;
     private TextView mAnswerTextView;
     private Button mShowAnswer;
-
+    private boolean[] mButtonClicked = new boolean[QuizActivity.mQuestionBank.length];
     public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
         Intent i = new Intent(packageContext, CheatActivity.class);
         i.putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue);
@@ -41,14 +41,26 @@ public class CheatActivity extends AppCompatActivity {
         mShowAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                updateButtonClicks();
                 if (mAnswerIsTrue) {
                     mAnswerTextView.setText(R.string.true_button);
                 } else {
                     mAnswerTextView.setText(R.string.false_button);
                 }
+                if(!mButtonClicked[QuizActivity.mCurrentIndex])  {
+                    QuizActivity.mQuestionBank[QuizActivity.mCurrentIndex].setIsAnswered(true);
+                    QuizActivity.mQuestionsAnswered++;
+                }
+                mButtonClicked[QuizActivity.mCurrentIndex] = true;
                 setAnswerShownResult(true);
             }
         });
+    }
+
+    private void updateButtonClicks()   {
+        for (int i = 0; i < QuizActivity.mQuestionBank.length; i++) {
+            mButtonClicked[i] = QuizActivity.mQuestionBank[i].getIsAnswered();
+        }
     }
 
     private void setAnswerShownResult(boolean isAnswerShown) {

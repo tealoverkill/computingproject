@@ -21,17 +21,20 @@ public class QuizActivity extends AppCompatActivity {
     private Button mSubmitButton;
     private TextView mQuestionTextView;
     private TextView mScoreText;
-    private Question[] mQuestionBank = new Question[] {
+    //mQuestionBank is public to allow CheatActivity to access it
+    public static Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_text, true, false),
             new Question(R.string.question_1, true, false),
             new Question(R.string.question_2, false, false),
             new Question(R.string.question_3, false, false),
             new Question(R.string.question_4, false, false),
     };
-    private int mCurrentIndex = 0;
+    //mCurrentIndex is public to allow CheatActivity to access it
+    public static int mCurrentIndex = 0;
     private boolean mIsCheater;
     public int mScoreCounter = 0;
-    private int mQuestionsAnswered = 0;
+    //mQuestionsAnswered is public to allow CheatActivity to access it
+    public static int mQuestionsAnswered = 0;
 
     //method for loading next question
     private void updateQuestion() {
