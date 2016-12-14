@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button mOnePlayerButton;
     private Button mTwoPlayerButton;
+    private Button mScoreButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,18 @@ public class MainActivity extends AppCompatActivity {
                 //creates an Intent named twoPlayer
                 startActivity(twoPlayer);
                 //starts twoPlayer
+            }
+        });
+
+        mScoreButton = (Button) findViewById(R.id.score_button);
+        mScoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent Scorelist = new Intent(getApplicationContext(), com.example.josep.quiz.ScorelistActivity.class);
+                //creates an Intent named Scorelist
+                startActivity(Scorelist);
+                //starts Scorelist
             }
         });
     }

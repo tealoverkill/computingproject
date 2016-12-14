@@ -19,6 +19,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mNextButton;
     private Button mCheatButton;
     private TextView mQuestionTextView;
+    private TextView mScoreText;
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_text, true),
             new Question(R.string.question_1, true),
@@ -65,6 +66,37 @@ public class QuizActivity extends AppCompatActivity {
 
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+        if (requestCode == REQUEST_CODE_CHEAT) {
+            if (data == null) {
+                return;
+            }
+            mIsCheater = CheatActivity.wasAnswerShown(data);
+        }
+    }
+
+    /* TO BE COMPLETED
+
+      1. Create boolean variable to determine if question has been answered before.
+         If yes, then mScoreCounter will not increase.
+         Conditions: if he chooses "show answer", clicks "true" or clicks "false", it records as answered.
+         Currently it increases if the answer is clicked correctly, but allows repetition.
+
+      2. Create boolean variable to determine whether all questions answered.
+
+      3. Create Submit button which appears if all questions answered, add Listener to send intent to ResultActivity when clicked
+
+       CODE TESTED
+
+       Intent finalscore = new Intent(QuizActivity.this, ResultActivity.class);
+                intent.putExtra("final_score", mScoreCounter);
+                startActivity(finalscore);
+    */
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
@@ -86,12 +118,18 @@ public class QuizActivity extends AppCompatActivity {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
 
+        //defines score text
+        mScoreText = (TextView) findViewById(R.id.score_text);
+
+
         //sets a Listener on the true button and creates Toast for answers
         mTrueButton = (Button) findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkAnswer(true);
+                isAnswerCorrect(true);
+                mScoreText.setText("Score: " + mScoreCounter);
             }
         });
 
@@ -102,6 +140,8 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
+                isAnswerCorrect(false);
+                mScoreText.setText("Score: " + mScoreCounter);
             }
         });
 
@@ -118,27 +158,6 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         updateQuestion();
-    }
-
-    //to count scores if someone scored
-    /*public void someoneScored(boolean usertrue){
-        boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
-        if (!mIsCheater && (usertrue == answerIsTrue))
-            mScoreCounter++;
-
-    }*/
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != Activity.RESULT_OK) {
-            return;
-        }
-        if (requestCode == REQUEST_CODE_CHEAT) {
-            if (data == null) {
-                return;
-            }
-            mIsCheater = CheatActivity.wasAnswerShown(data);
-        }
     }
 
 }

@@ -23,5 +23,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/no2_players" />
 
+    <Button
+        android:text="@string/score_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/score_button" />
+
 
 </LinearLayout>

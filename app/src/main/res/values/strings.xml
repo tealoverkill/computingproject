@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Quiz</string>
 
-    //For registration layout
+    //For Main Activity
     <string name="no_of_players">How many players?</string>
     <string name="no1_player">1 player</string>
     <string name="no2_players">2 players</string>
+    <string name="score_button">Scores</string>
+
+    //For registration layout
     <string name="player1_registration">Enter Player 1\'s Name</string>
     <string name="player2_registration">Enter Player 2\'s Name</string>
     <string name="proceed_registration">Proceed</string>
@@ -29,6 +32,10 @@
     <string name="question_3">1 + 2 = 2</string>
     <string name="question_4">1 + 2 = 4</string>
 
+    //For score
+    <string name="score">Score: 0</string>
+    <string name="finalscore">0</string>
+
     //For cheat button
     <string name="warning_text">Are you sure you want to do this?</string>
     <string name="show_answer_button">Show Answer</string>
@@ -37,6 +44,9 @@
     <string name="title_activity_cheat">Cheat</string>
 
     //For result layout
-    <string name = "result_text">Your results:</string>
+    <string name="result_text">You scored:</string>
+    <string name="play_again">Play again?</string>
+    <string name="player_2_turn">Proceed to player 2\'s turn</string>
+
 
 </resources>

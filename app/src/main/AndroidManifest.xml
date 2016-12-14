@@ -22,8 +22,9 @@
         <activity
             android:name=".CheatActivity"
             android:label="@string/title_activity_cheat"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ResultActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ResultActivity" />
+        <activity android:name=".ScorelistActivity"></activity>
     </application>
 
 </manifest>
