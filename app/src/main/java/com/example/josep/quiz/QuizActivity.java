@@ -19,7 +19,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mNextButton;
     private Button mCheatButton;
     private Button mSubmitButton;
-    private TextView mQuestionTextView;
+    public static TextView mQuestionTextView;
     private TextView mScoreText;
     //mQuestionBank is public to allow CheatActivity to access it
     public static Question[] mQuestionBank = new Question[] {

@@ -52,4 +52,12 @@
     <string name="play_again">Play again?</string>
     <string name="player_2_turn">Proceed to player 2\'s turn</string>
 
+    //For fragment
+    <string name="fragment_button_1">1</string>
+    <string name="fragment_button_2">2</string>
+    <string name="fragment_button_3">3</string>
+    <string name="fragment_button_4">4</string>
+    <string name="fragment_button_5">5</string>
+    <string name="fragment_text">Question selection:</string>
+
 </resources>
