@@ -21,7 +21,7 @@
 
     //For question layout
     <string name="question_text">
-        2 + 2 = 4
+       Question 1: 2 + 2 = 4
     </string>
     <string name="already_answered_toast">Already answered!</string>
     <string name="true_button">True</string>
@@ -31,10 +31,10 @@
     <string name="not_answered_toast">You haven\'t answered all questions yet!</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
-    <string name="question_1">1 + 1 = 2</string>
-    <string name="question_2">1 + 1 = 3</string>
-    <string name="question_3">1 + 2 = 2</string>
-    <string name="question_4">1 + 2 = 4</string>
+    <string name="question_1">Question 2: 1 + 1 = 2</string>
+    <string name="question_2">Question 3: 1 + 1 = 3</string>
+    <string name="question_3">Question 4: 1 + 2 = 2</string>
+    <string name="question_4">Question 5: 1 + 2 = 4</string>
 
     //For score
     <string name="score">Score: 0</string>
