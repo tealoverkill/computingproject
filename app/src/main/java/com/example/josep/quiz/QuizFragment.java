@@ -20,6 +20,7 @@ public class QuizFragment extends Fragment{
     private void setQuestion(int i)  {
         int question = QuizActivity.mQuestionBank[i].getTextResId();
         QuizActivity.mQuestionTextView.setText(question);
+        QuizActivity.mIsCheater = false;
     }
 
     @Override

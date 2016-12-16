@@ -31,7 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     };
     //mCurrentIndex is public to allow CheatActivity to access it
     public static int mCurrentIndex = 0;
-    private boolean mIsCheater;
+    public static boolean mIsCheater;
     public int mScoreCounter = 0;
     //mQuestionsAnswered is public to allow CheatActivity to access it
     public static int mQuestionsAnswered = 0;

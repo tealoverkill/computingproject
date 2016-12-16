@@ -41,7 +41,7 @@
     <string name="finalscore">0</string>
 
     //For cheat button
-    <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="warning_text">Are you sure you want to do this? You will not score a point!</string>
     <string name="show_answer_button">Show Answer</string>
     <string name="cheat_button">Cheat!</string>
     <string name="judgment_toast">Cheating is wrong.</string>
