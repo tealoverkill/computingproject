@@ -32,6 +32,11 @@ public class ResultActivity extends AppCompatActivity {
 
         playerMap.put(RegistrationActivity.p1_name_1player, final_score);
 
+        if (QuizActivity.playerOneDone = true){
+            int final_score2 = intent.getIntExtra("final_score2", 0);
+            playerMap.put(Registration2Activity.p2_name_2player, final_score2);
+        }
+
         Map<Integer, String> rankingMap = new HashMap<>();
         for (int i = QuizActivity.mQuestionBank.length; i >= 0; i--)    {
             for (String key : playerMap.keySet())   {
@@ -42,15 +47,8 @@ public class ResultActivity extends AppCompatActivity {
             }
         }
 
-
-
         mScoreText = (TextView) findViewById(R.id.result_text);
         mScoreText.setText(printScores);
-
-
-
-
-
 
         mPlayAgainButton = (Button) findViewById(R.id.play_again_button);
         mPlayAgainButton.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +58,7 @@ public class ResultActivity extends AppCompatActivity {
                 //Resets quiz parameters for new game
                 QuizActivity.mQuestionsAnswered = 0;
                 QuizActivity.mCurrentIndex = 0;
+                QuizActivity.playerOneDone = false;
                 for (int i = 0; i < QuizActivity.mQuestionBank.length; i++) {
                     QuizActivity.mQuestionBank[i].setIsAnswered(false);
                 }

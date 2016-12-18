@@ -20,6 +20,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mCheatButton;
     private Button mSubmitButton;
     public static TextView mQuestionTextView;
+    public static boolean playerOneDone = false;
     private TextView mScoreText;
     //mQuestionBank is public to allow CheatActivity to access it
     public static Question[] mQuestionBank = new Question[] {
@@ -35,6 +36,7 @@ public class QuizActivity extends AppCompatActivity {
     public int mScoreCounter = 0;
     //mQuestionsAnswered is public to allow CheatActivity to access it
     public static int mQuestionsAnswered = 0;
+
 
     //method for loading next question
     private void updateQuestion() {
@@ -183,9 +185,26 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mQuestionsAnswered == mQuestionBank.length)  {
-                    Intent finalscore = new Intent(getApplicationContext(), com.example.josep.quiz.ResultActivity.class);
-                    finalscore.putExtra("final_score", mScoreCounter);
-                    startActivity(finalscore);
+                    //If One Player is selected, goes to ResultActivity
+                    if (MainActivity.isOnePlayer) {
+                        Intent finalScore = new Intent(getApplicationContext(), com.example.josep.quiz.ResultActivity.class);
+                        finalScore.putExtra("final_score", mScoreCounter);
+                        startActivity(finalScore);
+                    }
+                    //If Two Player is selected, goes to Result2Activity
+                    else {
+                        Intent finalScore = new Intent(getApplicationContext(), com.example.josep.quiz.Result2Activity.class);
+                        //If Player One has already played
+                        if (playerOneDone = true){
+                            //Send the score over as Player 2's
+                            finalScore.putExtra("final_score2", mScoreCounter);}
+                        else {
+                            //Send the score over as Player 1's
+                            finalScore.putExtra("final_score1", mScoreCounter);
+                            //Update that Player 1 is done
+                        }
+                        startActivity(finalScore);
+                    }
                 }
                 else    {
                     Toast.makeText(QuizActivity.this, R.string.not_answered_toast, Toast.LENGTH_SHORT)

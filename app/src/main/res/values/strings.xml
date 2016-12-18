@@ -16,7 +16,8 @@
 
     //Players Start menu
     <string name="player1_turn">Player 1\'s turn</string>
-    <string name="player2_turn">Player 2\'s turn</string>
+    <string name="player2_turn">It\'s Player 2\'s turn.</string>
+    <string name="player2_handphone">Hand the phone to Player 2 and press Start to begin</string>
     <string name="start">Start</string>
 
     //For question layout
@@ -50,6 +51,7 @@
     //For result layout
     <string name="result_text">You scored:</string>
     <string name="play_again">Play again?</string>
+    <string name="next_player">Next Player</string>
     <string name="player_2_turn">Proceed to player 2\'s turn</string>
 
     //For fragment

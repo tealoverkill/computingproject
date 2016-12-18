@@ -14,12 +14,16 @@ public class MainActivity extends AppCompatActivity {
 
     private Button mOnePlayerButton;
     private Button mTwoPlayerButton;
-    private Button mScoreButton;
+    //for two players
+    public static boolean isOnePlayer;
+    //private Button mScoreButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        isOnePlayer = true;
 
         //sets a Listener on the 1 player button
         mOnePlayerButton = (Button) findViewById(R.id.no1_player);
@@ -41,27 +45,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent twoPlayer = new Intent(getApplicationContext(), com.example.josep.quiz.RegistrationActivity.class);
+                isOnePlayer = false;
+                Intent twoPlayer = new Intent(getApplicationContext(), com.example.josep.quiz.Registration2Activity.class);
                 //creates an Intent named twoPlayer
                 startActivity(twoPlayer);
                 //starts twoPlayer
             }
         });
 
-        mScoreButton = (Button) findViewById(R.id.score_button);
+        /*mScoreButton = (Button) findViewById(R.id.score_button);
         mScoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                /**
+
                 Intent Scorelist = new Intent(getApplicationContext(), com.example.josep.quiz.ScorelistActivity.class);
                 //creates an Intent named Scorelist
                 startActivity(Scorelist);
                 //starts Scorelist
-                 */
 
             }
-        });
+        });*/
     }
 
     /** Called when the user clicks the 1 player button
@@ -73,14 +77,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     */
-
-
-
-        //setContentView(R.layout.numberofplayers); - screen to request number of players
-        //setContentView(R.layout.registration1); - screen to register player 1 name
-        //setContentView(R.layout.registration2); - screen to register player 2 name
-        //setContentView(R.layout.player1start); - screen for player 1 to start
-        //setContentView(R.layout.player2start); - screen for player 2 to start
 
 
 }

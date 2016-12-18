@@ -20,8 +20,8 @@ public class Player1StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent player1start = new Intent(getApplicationContext(), com.example.josep.quiz.QuizActivity.class);
-                startActivity(player1start);
+                Intent quizActivity = new Intent(getApplicationContext(), com.example.josep.quiz.QuizActivity.class);
+                startActivity(quizActivity);
             }
         });
     }
