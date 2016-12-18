@@ -185,24 +185,27 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mQuestionsAnswered == mQuestionBank.length)  {
-                    //If One Player is selected, goes to ResultActivity
-                    if (MainActivity.isOnePlayer) {
+                    //Case 1
+                    //If One Player is selected and player one is not done, goes to ResultActivity
+                    if ((MainActivity.isOnePlayer)&& (!playerOneDone)){
                         Intent finalScore = new Intent(getApplicationContext(), com.example.josep.quiz.ResultActivity.class);
                         finalScore.putExtra("final_score", mScoreCounter);
                         startActivity(finalScore);
                     }
-                    //If Two Player is selected, goes to Result2Activity
-                    else {
+                    //Case 2
+                    //If Two Player is selected and player one is done (it's player 2's turn), goes to ResultActivity with player 2's score
+                    else if ((!MainActivity.isOnePlayer)&&(playerOneDone)) {
+                        Intent finalScore = new Intent(getApplicationContext(), com.example.josep.quiz.ResultActivity.class);
+                        //Send the score over as Player 2's
+                        finalScore.putExtra("final_score2", mScoreCounter);
+                        startActivity(finalScore);
+                    }
+                    //Case 3
+                    //If Two Player is selected, and player one is not done(it's player 1's turn), goes to Result2Activity with player 1's score
+                    else if ((!MainActivity.isOnePlayer)&& (!playerOneDone)){
                         Intent finalScore = new Intent(getApplicationContext(), com.example.josep.quiz.Result2Activity.class);
-                        //If Player One has already played
-                        if (playerOneDone = true){
-                            //Send the score over as Player 2's
-                            finalScore.putExtra("final_score2", mScoreCounter);}
-                        else {
-                            //Send the score over as Player 1's
-                            finalScore.putExtra("final_score1", mScoreCounter);
-                            //Update that Player 1 is done
-                        }
+                        //Send the score over as Player 1's
+                        finalScore.putExtra("final_score1", mScoreCounter);
                         startActivity(finalScore);
                     }
                 }

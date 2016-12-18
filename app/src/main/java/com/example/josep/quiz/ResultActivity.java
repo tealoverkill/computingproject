@@ -28,11 +28,14 @@ public class ResultActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int final_score = intent.getIntExtra("final_score", 0);
+        //if One Player, playerOneDone is false and we get score from case 1
+        if ((MainActivity.isOnePlayer)&& (!QuizActivity.playerOneDone)){
+            int final_score = intent.getIntExtra("final_score", 0);
+            playerMap.put(RegistrationActivity.p1_name_1player, final_score);
+        }
 
-        playerMap.put(RegistrationActivity.p1_name_1player, final_score);
-
-        if (QuizActivity.playerOneDone = true){
+        //if Two Player, playerOneDone is true and we get score from case 2
+        if ((!MainActivity.isOnePlayer)&& (QuizActivity.playerOneDone)){
             int final_score2 = intent.getIntExtra("final_score2", 0);
             playerMap.put(Registration2Activity.p2_name_2player, final_score2);
         }
