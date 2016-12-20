@@ -37,7 +37,6 @@ public class QuizFragment extends Fragment{
                 }
         );
 
-
         mButton2 = (Button) view.findViewById(R.id.fragment_button_2);
         mButton2.setOnClickListener(
                 new View.OnClickListener()  {
@@ -47,7 +46,6 @@ public class QuizFragment extends Fragment{
                     }
                 }
         );
-
 
         mButton3 = (Button) view.findViewById(R.id.fragment_button_3);
         mButton3.setOnClickListener(
@@ -59,7 +57,6 @@ public class QuizFragment extends Fragment{
                 }
         );
 
-
         mButton4 = (Button) view.findViewById(R.id.fragment_button_4);
         mButton4.setOnClickListener(
                 new View.OnClickListener()  {
@@ -70,7 +67,6 @@ public class QuizFragment extends Fragment{
                 }
         );
 
-
         mButton5 = (Button) view.findViewById(R.id.fragment_button_5);
         mButton5.setOnClickListener(
                 new View.OnClickListener()  {
@@ -80,7 +76,6 @@ public class QuizFragment extends Fragment{
                     }
                 }
         );
-
 
         return view;
 

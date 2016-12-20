@@ -85,24 +85,6 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-    /* TO BE COMPLETED
-
-      1. [DONE, check Question.java] Create boolean variable to determine if question has been answered before.
-         If yes, then mScoreCounter will not increase.
-         Conditions: if he chooses "show answer", clicks "true" or clicks "false", it records as answered.
-         Currently it increases if the answer is clicked correctly, but allows repetition.
-
-      2. [DONE, check QuizActivity.java] Create boolean variable to determine whether all questions answered.
-
-      3. Create Submit button which appears if all questions answered, add Listener to send intent to ResultActivity when clicked
-
-       CODE TESTED
-
-       Intent finalscore = new Intent(QuizActivity.this, ResultActivity.class);
-                intent.putExtra("final_score", mScoreCounter);
-                startActivity(finalscore);
-    */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

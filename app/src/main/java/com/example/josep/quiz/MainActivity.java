@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         //sets a Listener on the 2 player button
         mTwoPlayerButton = (Button) findViewById(R.id.no2_players);
         mTwoPlayerButton.setOnClickListener(new View.OnClickListener() {
@@ -52,32 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 //starts twoPlayer
             }
         });
-
-        /*mScoreButton = (Button) findViewById(R.id.score_button);
-        mScoreButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-
-                Intent Scorelist = new Intent(getApplicationContext(), com.example.josep.quiz.ScorelistActivity.class);
-                //creates an Intent named Scorelist
-                startActivity(Scorelist);
-                //starts Scorelist
-
-            }
-        });*/
     }
-
-    /** Called when the user clicks the 1 player button
-    public void OnePlayerMessage(View view) {
-        Intent intent = new Intent(this, RegistrationActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
-    */
-
-
 }
 
