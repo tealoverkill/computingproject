@@ -49,6 +49,7 @@ public class Result2Activity extends AppCompatActivity {
                 //Resets quiz parameters for new game
                 QuizActivity.mQuestionsAnswered = 0;
                 QuizActivity.mCurrentIndex = 0;
+                QuizActivity.mIsCheater = false;
                 for (int i = 0; i < QuizActivity.mQuestionBank.length; i++) {
                     QuizActivity.mQuestionBank[i].setIsAnswered(false);
                 }
