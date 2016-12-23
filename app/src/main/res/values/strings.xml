@@ -13,6 +13,7 @@
     <string name="proceed_registration">Proceed</string>
     <string name="blank_registration">Name cannot be empty</string>
     <string name="user_already_exists_registration">User already exists</string>
+    <string name="user_names_identical_registration">User names cannot be identical</string>
 
     //Players Start menu
     <string name="player1_turn">Player 1\'s turn</string>
